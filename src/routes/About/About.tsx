@@ -1,3 +1,5 @@
+import { Container } from '../../components';
+
 export function About() {
-	return <div>About</div>;
+	return <Container>About</Container>;
 }

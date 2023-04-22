@@ -1,19 +1,29 @@
-import { useState } from 'react';
-import './Root.css';
+import { NavLink, Outlet } from 'react-router-dom';
+import clsx from 'clsx';
+
+import styles from './Root.module.scss';
 
 export function Root() {
-	const [count, setCount] = useState(0);
-
 	return (
 		<>
-			<h1>Vite + React</h1>
-			<div className="card">
-				<button onClick={() => setCount((count) => count + 1)}>count is {count}</button>
-				<p>
-					Edit <code>src/App.tsx</code> and save to test HMR
-				</p>
-			</div>
-			<p className="read-the-docs">Click on the Vite and React logos to learn more</p>
+			<nav className={styles.nav}>
+				<ul className={styles.navList}>
+					{[
+						{ to: '/', children: 'Home' },
+						{ to: '/about', children: 'About' },
+						{ to: '/instructions', children: 'Instructions' },
+					].map((link) => (
+						<li key={link.to}>
+							<NavLink to={link.to} className={({ isActive }) => clsx(styles.navLink, isActive && styles.active)}>
+								{link.children}
+							</NavLink>
+						</li>
+					))}
+				</ul>
+			</nav>
+			<main>
+				<Outlet />
+			</main>
 		</>
 	);
 }

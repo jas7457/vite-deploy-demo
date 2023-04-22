@@ -1,0 +1,20 @@
+.nav {
+	background-color: var(--color-primary-light);
+	padding: 1.5rem 0;
+}
+
+.navList {
+	display: flex;
+	justify-content: center;
+	gap: 1rem;
+}
+
+.navLink {
+	text-decoration: none;
+
+	&.active,
+	&:hover,
+	&:focus {
+		border-bottom: 3px solid var(--color-primary-dark);
+	}
+}

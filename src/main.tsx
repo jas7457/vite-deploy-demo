@@ -2,18 +2,29 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
-import { Root, About } from './routes';
-import './index.css';
+import { Root, About, Home, Instructions } from './routes';
+import './reset.css';
+import './global.scss';
 
 const router = createBrowserRouter(
 	[
 		{
 			path: '/',
 			element: <Root />,
-		},
-		{
-			path: '/about',
-			element: <About />,
+			children: [
+				{
+					path: '/',
+					element: <Home />,
+				},
+				{
+					path: '/about',
+					element: <About />,
+				},
+				{
+					path: '/instructions',
+					element: <Instructions />,
+				},
+			],
 		},
 	],
 	{ basename: '/vite-deploy-demo/' }
